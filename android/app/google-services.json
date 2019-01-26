@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "624841009392",
+    "firebase_url": "https://fit-together-b972e.firebaseio.com",
+    "project_id": "fit-together-b972e",
+    "storage_bucket": "fit-together-b972e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624841009392:android:4d0d98fff1f06f77",
+        "android_client_info": {
+          "package_name": "com.example.fittogether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624841009392-kcjpc4v78cgv5scq9ufhrqa5fhrmkol3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADf2plmenn7Y1ei-Xiz4vwj1lK4A6zFaA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
