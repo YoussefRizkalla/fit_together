@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_together/auth/login.dart';
-import 'package:fit_together/components/circle_image.dart';
-import 'package:fit_together/components/rounded_button.dart';
-import 'package:fit_together/pages/home.dart';
 import 'package:flutter/material.dart';
 
 
@@ -18,19 +15,18 @@ class SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      key: _formKey,
       appBar: new AppBar(
         title: new Text("Sign up"),
         backgroundColor: Colors.purple,
       ),
       backgroundColor: Colors.white,
-      body: new Stack(
+      body: new Form(key: _formKey, child:       new Stack(
         fit: StackFit.expand,
         children: <Widget>[
           new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            new Text("Create a strong password to protect your account.",
+            new Text("Create your account.",
               style: new TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -39,6 +35,11 @@ class SignupState extends State<Signup> {
             new Padding(
             padding: const EdgeInsets.all(20), 
             child: new TextFormField(
+              validator: (input) {
+                if(input.isEmpty){
+                  return 'Email field is empty';
+                }
+              },             
               decoration: new InputDecoration(labelText: "Enter Email", filled: true),
               autofocus: true,
               keyboardType: TextInputType.emailAddress,
@@ -47,6 +48,11 @@ class SignupState extends State<Signup> {
             new Padding(
             padding: const EdgeInsets.all(20), 
             child: new TextFormField(
+              validator: (input) {
+                if(input.length < 8){
+                  return 'Your password must be at least 8 digits long.';
+                }
+              },
               decoration: new InputDecoration(labelText: "Enter Password", filled: true),
               autofocus: true,
               obscureText: true,
@@ -64,7 +70,7 @@ class SignupState extends State<Signup> {
               ),
           ],)
         ],
-      ),
+      ),)
     );
   }
 

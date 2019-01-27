@@ -64,7 +64,7 @@ class _EditProfilePage extends State<EditProfilePage> {
       try{
         var userInfo = new UserUpdateInfo();
         userInfo.displayName = _name;
-        user.updateProfile(userInfo);
+        //user.updateProfile(userInfo);
       }catch(e){
         print(e.message);
       }

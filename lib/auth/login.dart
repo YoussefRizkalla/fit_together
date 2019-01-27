@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fit_together/components/circle_image.dart';
-import 'package:fit_together/components/rounded_button.dart';
 import 'package:fit_together/pages/home.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +19,7 @@ class LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.white,
-      body: new Stack(
-        key: _formKey,
+      body: new Form(key: _formKey, child: new Stack(
         fit: StackFit.expand,
         children: <Widget>[
           new Column(
@@ -37,6 +34,11 @@ class LoginPageState extends State<LoginPage> {
             new Padding(
             padding: const EdgeInsets.all(20), 
             child: new TextFormField(
+              validator: (input) {
+                if (input.isEmpty) {
+                  return 'Provide an email';
+                }
+              },
               decoration: new InputDecoration(labelText: "Enter Email", filled: true),
               autofocus: true,
               keyboardType: TextInputType.emailAddress,
@@ -45,6 +47,11 @@ class LoginPageState extends State<LoginPage> {
             new Padding(
             padding: const EdgeInsets.all(20), 
             child: new TextFormField(
+              validator: (input) {
+                if(input.length < 6){
+                  return 'Longer password please';
+                }
+              },
               decoration: new InputDecoration(labelText: "Enter Password", filled: true),
               autofocus: true,
               obscureText: true,
@@ -62,7 +69,8 @@ class LoginPageState extends State<LoginPage> {
             ),
           ],)
         ],
-      ),
+      ),)
+      
     );
   }
   void signIn() async {
