@@ -31,10 +31,12 @@ class AppDrawer extends StatelessWidget {
             new ListTile(
               title: new Text("Manage Events"),
               leading: new Icon(Icons.event),
+              onTap: ()=> Navigator.of(context).pushNamed("/movetoevents")
             ),
             new ListTile(
               title: new Text("Friends"),
               leading: new Icon(Icons.people),
+              onTap: ()=> Navigator.of(context).pushNamed("/movetofriends")
             ),
             new ListTile(
               title: new Text("Messaging"),

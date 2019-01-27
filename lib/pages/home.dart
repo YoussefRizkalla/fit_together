@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_together/components/drawer.dart';
 import 'package:fit_together/events/event_list.dart';
+import 'package:fit_together/pages/friends_list.dart';
 import 'package:fit_together/pages/messaging.dart';
 import 'package:fit_together/pages/profile.dart';
 import 'package:flutter/foundation.dart';
@@ -20,7 +21,9 @@ class Home extends StatelessWidget{
       routes: <String,WidgetBuilder>{
         "/movetohome":(BuildContext context) => new HomePage(user),
         "/movetoprofile":(BuildContext context) => new ProfilePage(user),
+        "/movetoevents":(BuildContext context) => new EventList(user),
         "/movetomessaging":(BuildContext context) => new MessagingPage("Messaging", user),
+        "/movetofriends":(BuildContext context) => new FriendsListPage(user),
     }
     );
   }
