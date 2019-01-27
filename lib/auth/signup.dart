@@ -23,7 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
             TextFormField(
               validator: (input) {
                 if(input.isEmpty){
-                  return 'Email field is';
+                  return 'Email field is empty';
                 }
               },
               decoration: InputDecoration(

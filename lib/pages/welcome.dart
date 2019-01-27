@@ -20,7 +20,7 @@ class _WelcomePageState extends State<WelcomePage> {
         children: <Widget>[
           RaisedButton(
             onPressed: navigateToSignIn,
-            child: Text('Sign in'),
+            child: Text('Log in'),
           ),
           RaisedButton(
             onPressed: navigateToSignUp,
