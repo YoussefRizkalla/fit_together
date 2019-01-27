@@ -1,59 +1,74 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_together/auth/login.dart';
+import 'package:fit_together/components/circle_image.dart';
+import 'package:fit_together/components/rounded_button.dart';
+import 'package:fit_together/pages/home.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
+
+class Signup extends StatefulWidget{
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  State createState() => new SignupState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-
+class SignupState extends State<Signup> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _email, _password;
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            TextFormField(
-              validator: (input) {
-                if(input.isEmpty){
-                  return 'Email field is empty';
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Email'
-              ),
+      key: _formKey,
+      appBar: new AppBar(
+        title: new Text("Sign up"),
+        backgroundColor: Colors.purple,
+      ),
+      backgroundColor: Colors.white,
+      body: new Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            new Text("Create a strong password to protect your account.",
+              style: new TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              )
+            ),
+            new Padding(
+            padding: const EdgeInsets.all(20), 
+            child: new TextFormField(
+              decoration: new InputDecoration(labelText: "Enter Email", filled: true),
+              autofocus: true,
+              keyboardType: TextInputType.emailAddress,
               onSaved: (input) => _email = input,
-            ),
-            TextFormField(
-              validator: (input) {
-                if(input.length < 8){
-                  return 'Your password must be at least 8 digits long.';
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Password'
-              ),
-              onSaved: (input) => _password = input,
+            ),),
+            new Padding(
+            padding: const EdgeInsets.all(20), 
+            child: new TextFormField(
+              decoration: new InputDecoration(labelText: "Enter Password", filled: true),
+              autofocus: true,
               obscureText: true,
-            ),
-            RaisedButton(
+              onSaved: (input) => _password = input,
+              keyboardType: TextInputType.text,
+            ),),
+            new MaterialButton(
+              height: 40,
+              minWidth: 180,
+              color: Colors.blue,
+              splashColor: Colors.white,
+              textColor: Colors.white,
+              child: new Text('Sign up'),
               onPressed: signUp,
-              child: Text('Sign up'),
-            ),
-          ],
-        )
+              ),
+          ],)
+        ],
       ),
     );
   }
 
-  void signUp() async {
+void signUp() async {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
       try{

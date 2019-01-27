@@ -6,8 +6,8 @@ class CircleImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150.0,
-      height: 150.0,
+      width: 80,
+      height: 80,
       decoration: BoxDecoration(
           image: DecorationImage(
               image: NetworkImage(photoURL),

@@ -11,22 +11,47 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fit Together'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          RaisedButton(
-            onPressed: navigateToSignIn,
-            child: Text('Log in'),
+      body: new Stack(
+        fit: StackFit.expand,
+        children: <Widget> [
+          new Image(
+            image: new AssetImage("assets/backgroundImg.jpg"),
+            fit: BoxFit.cover
           ),
-          RaisedButton(
-            onPressed: navigateToSignUp,
-            child: Text('Sign up'),
-          ),
-        ],
+          new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Padding(
+                padding: const EdgeInsets.all(30), 
+                child: new Text("Get Fit Together",
+                  style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.white,
+                  )
+                ),
+              ),
+              new MaterialButton(
+              height: 40,
+              minWidth: 180,
+              color: Colors.teal,
+              splashColor: Colors.white,
+              textColor: Colors.white,
+              child: new Text('Login'),
+              onPressed: navigateToSignIn
+              ),
+              new MaterialButton(
+              height: 40,
+              minWidth: 180,
+              color: Colors.blue,
+              splashColor: Colors.white,
+              textColor: Colors.white,
+              child: new Text('Sign up'),
+              onPressed: navigateToSignUp
+              )
+            ],
+          )
+        ]
       ),
     );
   }
@@ -36,6 +61,6 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 
   void navigateToSignUp(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage(), fullscreenDialog: true));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Signup(), fullscreenDialog: true));
   }
 }

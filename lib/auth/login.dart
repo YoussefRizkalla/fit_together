@@ -1,58 +1,70 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_together/components/circle_image.dart';
+import 'package:fit_together/components/rounded_button.dart';
 import 'package:fit_together/pages/home.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget{
   @override
-  _LoginPageState createState() => new _LoginPageState();
+  State createState() => new LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-
+class LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _email, _password;
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(),
-      body: Form(
+      appBar: new AppBar(
+        title: new Text("Sign In"),
+        backgroundColor: Colors.blue,
+      ),
+      backgroundColor: Colors.white,
+      body: new Stack(
         key: _formKey,
-        child: Column(
-          children: <Widget>[
-            TextFormField(
-              validator: (input) {
-                if(input.isEmpty){
-                  return 'Provide an email';
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Email'
-              ),
+        fit: StackFit.expand,
+        children: <Widget>[
+          new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            new Text("Please enter your email and password correctly.",
+              style: new TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              )
+            ),
+            new Padding(
+            padding: const EdgeInsets.all(20), 
+            child: new TextFormField(
+              decoration: new InputDecoration(labelText: "Enter Email", filled: true),
+              autofocus: true,
+              keyboardType: TextInputType.emailAddress,
               onSaved: (input) => _email = input,
-            ),
-            TextFormField(
-              validator: (input) {
-                if(input.length < 6){
-                  return 'Longer password please';
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Password'
-              ),
-              onSaved: (input) => _password = input,
+            ),),
+            new Padding(
+            padding: const EdgeInsets.all(20), 
+            child: new TextFormField(
+              decoration: new InputDecoration(labelText: "Enter Password", filled: true),
+              autofocus: true,
               obscureText: true,
-            ),
-            RaisedButton(
+              onSaved: (input) => _password = input,
+              keyboardType: TextInputType.text,
+            ),),
+            new MaterialButton(
+              height: 40,
+              minWidth: 180,
+              color: Colors.teal,
+              splashColor: Colors.white,
+              textColor: Colors.white,
+              child: new Text('Login'),
               onPressed: signIn,
-              child: Text('Sign in'),
             ),
-          ],
-        )
+          ],)
+        ],
       ),
     );
   }
-
   void signIn() async {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
