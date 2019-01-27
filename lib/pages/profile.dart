@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_together/components/circle_image.dart';
 import 'package:fit_together/components/drawer.dart';
+import 'package:fit_together/components/rounded_button.dart';
 import 'package:fit_together/pages/edit_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -30,18 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
             top: MediaQuery.of(context).size.height / 5,
             child: Column(
               children: <Widget>[
-                Container(
-                    width: 150.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'https://pixel.nymag.com/imgs/daily/vulture/2017/06/14/14-tom-cruise.w700.h700.jpg'),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.all(Radius.circular(75.0)),
-                        boxShadow: [
-                          BoxShadow(blurRadius: 7.0, color: Colors.greenAccent)
-                        ])),
+                CircleImage('https://pixel.nymag.com/imgs/daily/vulture/2017/06/14/14-tom-cruise.w700.h700.jpg'),
                 SizedBox(height: 50.0),
                 Text(
                   'Tom Cruise',
@@ -55,25 +46,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   'tomcruise@gmail.ca'
                 ),
                 SizedBox(height: 25.0),
-                Container(
-                    height: 30.0,
-                    width: 95.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.greenAccent,
-                      color: Colors.green,
-                      elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage(), fullscreenDialog: true));},
-                        child: Center(
-                          child: Text(
-                            'Edit Profile',
-                            style: TextStyle(color: Colors.white, fontFamily: 'Montserrat'),
-                          ),
-                        ),
-                      ),
-                    )),
-                    SizedBox(height: 25.0),
+                RoundedButton(Colors.green, 'Edit Profile', MaterialPageRoute(builder: (context) => EditProfilePage(user), fullscreenDialog: true)),
+                SizedBox(height: 25.0),
               ],
             ))
       ],
