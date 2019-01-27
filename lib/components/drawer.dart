@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_together/components/circle_image.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -11,12 +12,9 @@ class AppDrawer extends StatelessWidget {
           children: <Widget>
           [
             new UserAccountsDrawerHeader(
-              accountName: new Text("No Name"),
+              accountName: new Text("Tom Cruise"),
               accountEmail: new Text('${user.email}'),
-              currentAccountPicture: new CircleAvatar(
-                backgroundColor: Colors.red,
-                child:new Text("NN", style: new TextStyle(fontSize: 32),),
-              ),
+              currentAccountPicture: new CircleImage('https://pixel.nymag.com/imgs/daily/vulture/2017/06/14/14-tom-cruise.w700.h700.jpg')
             ),
             new ListTile(
               title: new Text("Home"),

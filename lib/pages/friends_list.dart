@@ -65,6 +65,7 @@ class _FriendsListPageState extends State<FriendsListPage> {
     return new Scaffold(
       appBar: new AppBar(title: new Text('Friends')),
       drawer: AppDrawer(widget.user),
+      floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.add), ),
       body: content,
     );
   }
