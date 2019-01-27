@@ -1,23 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fit_together/components/drawer.dart';
 import 'package:fit_together/pages/messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-//void main ()=> runApp(new Home());
+
 class Home extends StatelessWidget{
+  const Home({Key key, this.user}) : super(key: key);
+  final FirebaseUser user;
+
   @override
   Widget build(BuildContext context){
     return new MaterialApp(
       theme: new ThemeData(
-        primarySwatch: Colors.lime
+        primarySwatch: Colors.green
       ),
-      home:new HomePage(),
+      home:new HomePage(user),
       routes: <String,WidgetBuilder>{
-        "/movetomessaging":(BuildContext context) => new MessagingPage("Welcome to le asshole"),
+        "/movetomessaging":(BuildContext context) => new MessagingPage("Welcome to le asshole", user),
     }
     );
   }
 }
 
 class HomePage extends StatelessWidget{
+  const HomePage(this.user);
+  final FirebaseUser user;
   @override
   Widget build(BuildContext context){
     return new Scaffold(
@@ -25,36 +32,7 @@ class HomePage extends StatelessWidget{
         title: new Text("Yes"),
         elevation: defaultTargetPlatform ==TargetPlatform.android ? 5.0:0.0,
       ),
-      drawer: new Drawer(
-        child: new ListView(
-          children: <Widget>
-          [
-            new UserAccountsDrawerHeader(
-              accountName: new Text("Test"),
-              accountEmail: new Text("Test@gmail.com"),
-              currentAccountPicture: new CircleAvatar(
-                backgroundColor: Colors.cyan,
-                child:new Text("Test"),
-              ),
-            ),
-            new ListTile(
-              title: new Text("Main Page"),
-              trailing: new Icon(Icons.arrow_upward)
-              ),
-            new ListTile(
-              title: new Text("Messaging"),
-              trailing: new Icon(Icons.arrow_downward),
-              onTap: ()=> Navigator.of(context).pushNamed("/movetomessaging")
-            ),
-            new Divider(),
-            new ListTile(
-              title: new Text("Close"),
-              trailing: new Icon(Icons.close),
-              onTap: ()=> Navigator.of(context).pop(),
-              ),
-          ],
-        )
-      ),
+      drawer: AppDrawer(user),
       body: new Container(
         child: new Center(
           child: new Text("Home Page")
