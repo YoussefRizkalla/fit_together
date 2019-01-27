@@ -17,6 +17,7 @@ class Home extends StatelessWidget{
       ),
       home: new HomePage(user),
       routes: <String,WidgetBuilder>{
+        "/movetohome":(BuildContext context) => new HomePage(user),
         "/movetoprofile":(BuildContext context) => new ProfilePage(user),
         "/movetomessaging":(BuildContext context) => new MessagingPage("Messaging", user),
     }

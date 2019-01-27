@@ -20,7 +20,8 @@ class AppDrawer extends StatelessWidget {
             ),
             new ListTile(
               title: new Text("Home"),
-              leading: new Icon(Icons.home)
+              leading: new Icon(Icons.home),
+              onTap: ()=> Navigator.of(context).pushNamed("/movetohome")
               ),
             new ListTile(
               title: new Text("Profile"),
