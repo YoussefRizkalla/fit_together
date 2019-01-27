@@ -1,4 +1,4 @@
-import 'package:fit_together/auth/login.dart';
+import 'package:fit_together/pages/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: LoginPage(),
+      home: WelcomePage(),
     );
   }
 }

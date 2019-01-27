@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fit_together/pages/home.dart';
+import 'package:fit_together/auth/login.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => new _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _email, _password;
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             TextFormField(
               validator: (input) {
                 if(input.isEmpty){
-                  return 'Provide an email';
+                  return 'Email field is';
                 }
               },
               decoration: InputDecoration(
@@ -33,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextFormField(
               validator: (input) {
-                if(input.length < 6){
-                  return 'Longer password please';
+                if(input.length < 8){
+                  return 'Your password must be at least 8 digits long.';
                 }
               },
               decoration: InputDecoration(
@@ -44,8 +44,8 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
             ),
             RaisedButton(
-              onPressed: signIn,
-              child: Text('Sign in'),
+              onPressed: signUp,
+              child: Text('Sign up'),
             ),
           ],
         )
@@ -53,12 +53,12 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void signIn() async {
+  void signUp() async {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
       try{
-        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
       }catch(e){
         print(e.message);
       }
