@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_together/components/drawer.dart';
+import 'package:fit_together/events/event_list.dart';
 import 'package:fit_together/pages/messaging.dart';
 import 'package:fit_together/pages/profile.dart';
 import 'package:flutter/foundation.dart';
@@ -15,7 +16,7 @@ class Home extends StatelessWidget{
       theme: new ThemeData(
         primarySwatch: Colors.green
       ),
-      home: new HomePage(user),
+      home: new EventList(user),
       routes: <String,WidgetBuilder>{
         "/movetohome":(BuildContext context) => new HomePage(user),
         "/movetoprofile":(BuildContext context) => new ProfilePage(user),
