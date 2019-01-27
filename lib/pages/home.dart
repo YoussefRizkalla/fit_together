@@ -18,7 +18,7 @@ class Home extends StatelessWidget{
       home: new HomePage(user),
       routes: <String,WidgetBuilder>{
         "/movetoprofile":(BuildContext context) => new ProfilePage(user),
-        "/movetomessaging":(BuildContext context) => new MessagingPage("Welcome to le asshole", user),
+        "/movetomessaging":(BuildContext context) => new MessagingPage("Messaging", user),
     }
     );
   }
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget{
   Widget build(BuildContext context){
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Yes"),
+        title: new Text("Home"),
         elevation: defaultTargetPlatform ==TargetPlatform.android ? 5.0:0.0,
       ),
       drawer: AppDrawer(user),
