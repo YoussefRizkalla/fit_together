@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_together/components/drawer.dart';
 import 'package:fit_together/pages/messaging.dart';
+import 'package:fit_together/pages/profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,9 @@ class Home extends StatelessWidget{
       theme: new ThemeData(
         primarySwatch: Colors.green
       ),
-      home:new HomePage(user),
+      home: new HomePage(user),
       routes: <String,WidgetBuilder>{
+        "/movetoprofile":(BuildContext context) => new ProfilePage(user),
         "/movetomessaging":(BuildContext context) => new MessagingPage("Welcome to le asshole", user),
     }
     );

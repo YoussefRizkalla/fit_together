@@ -11,26 +11,47 @@ class AppDrawer extends StatelessWidget {
           children: <Widget>
           [
             new UserAccountsDrawerHeader(
-              accountName: new Text("Test"),
+              accountName: new Text("No Name"),
               accountEmail: new Text('${user.email}'),
               currentAccountPicture: new CircleAvatar(
-                backgroundColor: Colors.cyan,
-                child:new Text("Test"),
+                backgroundColor: Colors.red,
+                child:new Text("NN", style: new TextStyle(fontSize: 32),),
               ),
             ),
             new ListTile(
-              title: new Text("Main Page"),
-              trailing: new Icon(Icons.arrow_upward)
+              title: new Text("Home"),
+              leading: new Icon(Icons.home)
               ),
             new ListTile(
+              title: new Text("Profile"),
+              leading: new Icon(Icons.person),
+              onTap: ()=> Navigator.of(context).pushNamed("/movetoprofile")
+            ),
+            new ListTile(
+              title: new Text("Manage Events"),
+              leading: new Icon(Icons.event),
+            ),
+            new ListTile(
+              title: new Text("Friends"),
+              leading: new Icon(Icons.people),
+            ),
+            new ListTile(
               title: new Text("Messaging"),
-              trailing: new Icon(Icons.arrow_downward),
+              leading: new Icon(Icons.message),
               onTap: ()=> Navigator.of(context).pushNamed("/movetomessaging")
             ),
             new Divider(),
             new ListTile(
-              title: new Text("Close"),
-              trailing: new Icon(Icons.close),
+              title: new Text("Settings"),
+              leading: new Icon(Icons.settings),
+            ),
+            new ListTile(
+              title: new Text("Logout"),
+              leading: new Icon(Icons.power_settings_new),
+            ),
+            new ListTile(
+              title: new Text("Close Drawer"),
+              leading: new Icon(Icons.close),
               onTap: ()=> Navigator.of(context).pop(),
               ),
           ],
