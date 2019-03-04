@@ -1,16 +1,8 @@
-# fit_together
+# Fit Together
 
-A new Flutter project.
+[![Devpost Link](https://img.shields.io/badge/project-devpost-blue.svg)](https://devpost.com/software/fit_together)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Fit Together is a cross-platform mobile app developed in Flutter. The app is designed to encourage community members to live a healthy lifestyle by allowing users to host and attend fitness events near them.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+This app was designed during DeltaHacks V, in which our team won an award for the Best Use of Google Cloud Platform.
